@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Papa 🎂</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: #000;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Start Button */
+    #startBtn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(45deg, #ff0080, #ffae00);
+      color: #fff;
+      padding: 20px 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255,255,255,0.6);
+      animation: pulse 1.5s infinite;
+      z-index: 9999;
+    }
+
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
+.caption {
+  position: absolute;
+  bottom: 8%;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00ab);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+  white-space: nowrap;        /* लाइन तोड़ेगा नहीं */
+  overflow: hidden;           /* text बाहर न निकले */
+  border-right: 3px solid #fff; /* typing cursor effect */
+  animation: typing 7s steps(40, end) infinite, 
+             rainbowGlow 7s infinite linear;
+}
+
+/* Typing Animation */
+@keyframes typing {
+  0% { width: 0; }
+  50% { width: 100%; }
+  100% { width: 0; }
+}
+
+/* Glow Animation */
+@keyframes rainbowGlow {
+  0% { filter: drop-shadow(0 0 5px red); }
+  25% { filter: drop-shadow(0 0 10px orange); }
+  50% { filter: drop-shadow(0 0 15px yellow); }
+  75% { filter: drop-shadow(0 0 10px lime); }
+  100% { filter: drop-shadow(0 0 5px cyan); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .caption { font-size: 1.4em; bottom: 12%; }
+}
+
+
+
+    .slide.active .caption {
+      animation: captionFade 4s forwards;
+    }
+
+    @keyframes captionFade {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .celebration {
+      position: absolute;
+      top: 5%;
+      width: 100%;
+      text-align: center;
+      font-size: 2.5em;
+      color: gold;
+      font-weight: bold;
+      text-shadow: 2px 2px 10px #000;
+      animation: bounce 2s infinite, glow 2s infinite alternate;
+      white-space: nowrap;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px gold; }
+      to { text-shadow: 0 0 25px red, 0 0 40px gold; }
+    }
+
+    #confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      color: red;
+      animation: floatUp 6s linear forwards;
+      z-index: 999;
+      text-shadow: 0 0 10px #ff8080;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .caption { font-size: 1.2em; bottom: 15%; }
+      .celebration { font-size: 1.8em; }
+    }
+    @media (max-width: 480px) {
+      .caption { font-size: 1em; }
+      .celebration { font-size: 1.5em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Start Button -->
+  <button id="startBtn">✨ Start Celebration ✨</button>
+
+  <canvas id="confetti" class="hidden"></canvas>
+
+  <div class="slideshow hidden">
+    <div class="slide active">
+      <img src="papa.jpg" alt="Papa">
+      <div class="caption">पापा, आप हमारे लिए भगवान का सबसे बड़ा तोहफ़ा हो ❤</div>
+    </div>
+    <div class="slide">
+      <img src="img2.jpg" alt="Papa">
+      <div class="caption">आपकी मेहनत और प्यार से हमारी ज़िंदगी रोशन है ✨</div>
+    </div>
+    <div class="slide">
+      <img src="img3.jpg" alt="Papa">
+      <div class="caption">आप हमारे हीरो हो, पापा 🙌</div>
+    </div>
+    <div class="slide">
+      <img src="img4.jpg" alt="Papa">
+      <div class="caption">हम सब आपसे बहुत प्यार करते हैं ❤</div>
+    </div>
+    <div class="slide">
+      <img src="img5.jpg" alt="Papa">
+      <div class="caption">जन्मदिन की ढेर सारी शुभकामनाएँ पापा 🎂🎉</div>
+    </div>
+    <div class="celebration" id="celebrationText"></div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="soft_music.mp3" type="audio/mpeg">
+    आपका ब्राउज़र ऑडियो सपोर्ट नहीं करता।
+  </audio>
+
+  <script src="birthday.js"></script>
+</body>
+</html>
